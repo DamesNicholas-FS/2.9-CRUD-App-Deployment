@@ -7,6 +7,7 @@ const ViewTicketPage = () => {
     const [ticket, setTicket] = useState(null);
     const [inputValues, setInputValues] = useState({
         name: '',
+        phone: '',
         title: '',
         description: '',
     });
@@ -18,7 +19,8 @@ const ViewTicketPage = () => {
             const res = await axios.get(`http://localhost:3000/${id}`);
             setTicket(res.data);
             setInputValues({ 
-                name: res.data.name, 
+                name: res.data.name,
+                phone: res.data.phone,
                 title: res.data.title, 
                 description: res.data.description 
             });
@@ -53,13 +55,15 @@ const ViewTicketPage = () => {
                     <form onSubmit={handleSubmit} action='/'>
                         <p className="text-gray-900/75 text-sm py-2">Name</p>
                         <input name="name" className='p-2 border border-gray-400 w-96' placeholder='i.e. (Johnny Appleseed)' type="text" value={inputValues.name} onChange={handleInputChange} />
+                        <p className="text-gray-900/75 text-sm py-2">Phone</p>
+                        <input name="phone" className='p-2 border border-gray-400 w-96' placeholder='555 555 5555' type="text" value={inputValues.phone} onChange={handleInputChange} />
                         <p className="text-gray-900/75 text-sm py-2">Subject / Title</p>
                         <input name="title" className='p-2 border border-gray-400 w-96' placeholder='i.e. (Wi-Fi Issue With PC)' type="text" value={inputValues.title} onChange={handleInputChange} />
                         <p className="text-gray-900/75 text-sm py-2">Description</p>
                         <textarea name="description" className='w-96 p-2 h-48 border border-gray-400' placeholder='i.e. (When trying to connect to Wi-Fi...)' value={inputValues.description} onChange={handleInputChange} />
                         <div className='flex gap-3'>
                             <button className='p-1 bg-gray-100 border border-gray-400 h-10 w-32' type="submit" value="submit">Update Ticket</button>
-                            <a href='/' className='p-1 bg-red-300 border text-black border-red-400 h-10 w-32 flex justify-center items-center' type="submit">Cancel</a>
+                            <a href='/' className='p-1 bg-red-300 border text-black border-red-400 h-10 w-32 flex justify-center items-center'>Cancel</a>
                         </div>
                     </form>
                 </div>

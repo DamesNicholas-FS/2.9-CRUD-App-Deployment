@@ -15,17 +15,18 @@ const findById = async(req, res) => {
 
 // Create A New Ticket
 const create = async(req, res) => {
-    const { name, title, description } = req.body;
-    const newTicket = await NewTicket.create({name, title, description});
+    const { name, phone, title, description } = req.body;
+    const newTicket = await NewTicket.create({name, phone, title, description});
     res.json({ message: 'Ticket created', ticket: newTicket });
 }
 
 // Update A Single Ticket
 const findByIdAndUpdate = async(req, res) => {
     const { id } = req.params;
-    const { name, title, description } = req.body;
+    const { name, phone, title, description } = req.body;
     await NewTicket.findByIdAndUpdate(id, {
         name,
+        phone,
         title,
         description
     });
