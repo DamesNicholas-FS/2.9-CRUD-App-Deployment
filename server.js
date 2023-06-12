@@ -21,5 +21,5 @@ app.patch('/:id' , controller.findByIdAndUpdate);
 app.delete('/:id' , controller.findByIdAndDelete);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port {process.env.PORT}`);
+    console.log(`Server is running on port ${process.env.PORT}`);
 });
