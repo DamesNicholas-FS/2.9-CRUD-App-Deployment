@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route name='home' path='/' element={<Home />} />
           <Route name='new-ticket' path='/new-ticket' element={<NewTicketPage />} />
-          <Route name='view-ticket' path='/view-ticket' element={<ViewTicketPage />} />
+          <Route name='view-ticket' path='/view-ticket/:id' element={<ViewTicketPage />} />
         </Routes>
       </BrowserRouter>
     </div>
