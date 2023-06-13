@@ -9,6 +9,20 @@ const controller = require('./controllers/controller');
 const cors = require('cors');
 const app = express();
 
+
+// Only for production builds on Heroku
+if (process.env.NODE_ENV === 'production') {
+    // Express will serve up assets
+    // like main.js and main.css
+    app.use(express.static('server.js'));
+    // Express will serve up the index.html
+    // if it doesn't recognize the route
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
+
 app.use(express.json());
 app.use(cors());
 
