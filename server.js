@@ -9,7 +9,6 @@ const controller = require('./controllers/controller');
 const cors = require('cors');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'build')));
 
 // Only for production builds on Heroku
 if (process.env.NODE_ENV === 'production') {
