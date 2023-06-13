@@ -9,7 +9,6 @@ const controller = require('./controllers/controller');
 const cors = require('cors');
 const app = express();
 
-
 // Only for production builds on Heroku
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up assets
