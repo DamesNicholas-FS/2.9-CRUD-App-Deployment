@@ -9,6 +9,7 @@ const controller = require('./controllers/controller');
 const cors = require('cors');
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Only for production builds on Heroku
 if (process.env.NODE_ENV === 'production') {
@@ -19,8 +20,8 @@ if (process.env.NODE_ENV === 'production') {
     // if it doesn't recognize the route
     const path = require('path');
     app.get('*', (req, res) => {
-        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
+        res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    }); 
 }
 
 app.use(express.json());
