@@ -14,7 +14,7 @@ const app = express();
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up assets
     // like main.js and main.css
-    app.use(express.static('server.js'));
+    app.use(express.static('crud-react/index.html'));
     // Express will serve up the index.html
     // if it doesn't recognize the route
     const path = require('path');
