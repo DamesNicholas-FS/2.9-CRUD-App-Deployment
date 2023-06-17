@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-reactjs": "npm install --prefix reactis",
+    "install-api": "npm install --prefix api",
+    "build-reactis" : "pm run build --preifix reactis",
+    "heroku-postbuild": "concurrently \"npm:install-*\"; concurrently \"npm: build-*\"; ",
+    "start": "npm start --prefix server.js",
+    "dev:react": "concurrently --raw \"npm run server.js\"; concurrently \"npm run react\"; ",
+    "react": "cd reactis && npm run start",
+    "server.js": "cd api && npm run dev"
   },
   "author": "",
   "license": "ISC",
